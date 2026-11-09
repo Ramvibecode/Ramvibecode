@@ -10,30 +10,74 @@ I bring 14+ years of experience across sourcing, procurement, e-commerce fulfill
 
 ### Emboss ERP — Operations and logistics workflows
 
-Operations and ERP process work for Emboss Design. I translate purchasing, logistics, customs, invoicing, and AP/AR needs into structured workflows and operational controls.
+Operations and ERP process work for Emboss Design. I translate purchasing, international logistics, customs, invoicing, and AP/AR requirements into workflows that make each record traceable, expose exceptions early, and keep people in control of consequential actions.
 
-- Purchase order and shipment matching, milestone visibility, and exception follow-up
-- AP document intake and classification with human review for uncertain records
-- Customs entry and Form 7501 recordkeeping
-- Goods, freight, and tariff invoice workflows; freight allocations and cost variance checks
-- Duplicate safeguards, audit history, and draft-only external communication
+#### Purchase orders, shipments, and exception control
 
-**My role:** ERP and operations process ownership, requirements, data rules, workflow design, UAT, and AI-assisted implementation.
+- Match purchase orders to shipment and forwarder data, normalize status updates, and make the current milestone visible in one operational view.
+- Track shipment events such as departure, arrival, appointments, warehouse delivery, gate-out, and empty return.
+- Separate matched and unchanged records from unmatched, ambiguous, duplicate, or invalid updates so exceptions can be reviewed without silently changing the wrong order.
+- Surface missing documents, release or appointment gaps, delayed arrivals, delivery deadlines, and the next follow-up needed.
 
-**Tools:** Supabase/PostgreSQL, Cloudflare Pages and Workers, JavaScript, SharePoint, Outlook, Power Automate, APIs, and structured CSV/JSON data.
+#### AP documents and customs records
+
+- Route invoice and logistics attachments from Outlook and SharePoint into a PO-centered document workflow, with duplicate checks and a path for unclassified documents.
+- Classify likely invoices while sending uncertain records to human review; prepare structured AP intake data for review before import.
+- Keep customs entry files and Form 7501 details linked to their supporting records, with a master-register process for approved updates and follow-up on missing information.
+
+#### Invoicing, freight, and cost controls
+
+- Support separate Goods, Freight, and Tariff invoice workflows, including brand-aware invoice preparation where one order contains multiple brands.
+- Allocate freight using explicit line-level amounts and reconcile the allocation to the freight total before an invoice can proceed.
+- Compare expected and actual costs, flag variances, and catch missing or inconsistent inputs before they reach a customer-facing document.
+- Preserve correction and duplicate-draft history while preventing parent drafts or repeated records from being counted twice.
+
+#### Review and communication boundaries
+
+- Use duplicate safeguards, idempotent synchronization, audit history, and visible exception states to make operational changes reviewable.
+- Keep external email actions draft-only so a person can inspect and approve a message before it is sent.
+- Use human review before uncertain AP imports or other material updates.
+
+**My role:** ERP and operations process ownership, requirements, workflow and data-rule design, exception handling, UAT, and AI-assisted implementation.
+
+**Tools:** Supabase/PostgreSQL, Cloudflare Pages and Workers, JavaScript, SharePoint, Outlook, Power Automate, REST APIs, and structured CSV/JSON data.
 
 Internal source code, customer/vendor details, and live business records are not included.
 
 ### Real Essentials — E-commerce Operations Toolkit
 
-Built and maintained a connected browser-based operations hub for supplier, ERP, and marketplace files. The modules cover:
+Built and maintained a browser-based operations hub for supplier, NetSuite, and Amazon marketplace workflows. It brings recurring file preparation, validation, matching, and exception review into a connected set of focused tools.
 
-- **Inbound Processor**, **Packing List Consolidator**, and **Inbound Qty Reconcile** for inbound files, packing lists, and PO quantity and case-pack checks
-- **Send to Amazon**, **FBA Order List**, and **FBA Shipped Qty Cross-Check** for shipment manifests, carton labels, order matching, and shipped-quantity audits
-- **Flat File Toolkit** and **Listing Compare** for catalog and marketplace file validation
-- **Case Tracker** for Seller Central case follow-up
+#### Supplier files, NetSuite purchase orders, and inbound reconciliation
 
-The toolkit is summarized here as a case study. The original HTML and company data are not published.
+- **Inbound Processor** prepares and normalizes inbound supplier files for downstream operations.
+- **Packing List Consolidator** combines packing-list data into a consistent view for order and shipment review.
+- **Inbound Qty Reconcile** compares packing-list quantities with open purchase-order quantities, using PO and UPC matching and case-pack logic to surface short, excess, missing, or inconsistent items.
+- **NetSuite PO workflow:** work with exported NetSuite purchase-order data as the reference for open quantities and item matching. The current toolkit uses a file-based import/reconciliation path; it is not represented here as a live NetSuite API connector.
+
+#### Amazon FBA preparation and shipment checks
+
+- **Send to Amazon** organizes and validates shipment inputs, including item, carton, and manifest information, before the FBA workflow proceeds.
+- **FBA Order List** consolidates order and shipment records for operational review.
+- **FBA Shipped Qty Cross-Check** compares expected and shipped quantities and highlights discrepancies that need investigation.
+
+#### Catalog quality and Seller Central follow-up
+
+- **Flat File Toolkit** checks marketplace listing files for required structure and data issues before upload.
+- **Listing Compare** compares listing records to find missing, changed, or mismatched product information.
+- **Case Tracker** keeps Seller Central cases and their follow-up actions visible.
+
+#### Direct API integration direction
+
+The toolkit’s documented workflow is file-driven. The next integration layer is to move approved actions into the workspace through authorized APIs:
+
+- Use Amazon’s **Selling Partner API (SP-API)** for supported seller and FBA operations, including creating and managing inbound plans and shipments, then retrieving related shipment information and documents.
+- Use the separate **Amazon Ads API** for advertising operations such as campaign creation and management. Advertising uses its own API access and permissions; it is not part of the Selling Partner API.
+- A future direct NetSuite connector could replace exported PO files with authorized system-to-system exchange.
+
+These API connections require the relevant account authorization, permissions, and implementation. The public case study distinguishes the existing file-based toolkit from this planned integration scope.
+
+The original HTML and company data are not published.
 
 ### Glassworks Workroom — CRM-style operations prototype
 
