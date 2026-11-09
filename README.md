@@ -50,10 +50,12 @@ Built and maintained a browser-based operations hub for supplier, NetSuite, and 
 
 #### Supplier files, NetSuite purchase orders, and inbound reconciliation
 
-- **Inbound Processor** prepares and normalizes inbound supplier files for downstream operations.
-- **Packing List Consolidator** combines packing-list data into a consistent view for order and shipment review.
-- **Inbound Qty Reconcile** compares packing-list quantities with open purchase-order quantities, using PO and UPC matching and case-pack logic to surface short, excess, missing, or inconsistent items.
-- **NetSuite PO workflow:** work with exported NetSuite purchase-order data as the reference for open quantities and item matching. The current toolkit uses a file-based import/reconciliation path; it is not represented here as a live NetSuite API connector.
+- **Inbound Processor** accepts a single supplier invoice or packing list, or a batch of documents, and prepares them for PO-backed processing.
+- **NetSuite API connection:** the tool reads the relevant purchase-order data from NetSuite through an authorized API connection, then matches uploaded documents against the available PO and item records.
+- **Quantity and carton checks:** compare invoice and packing-list quantities with the PO, including carton or case quantities, and surface missing, excess, or inconsistent details before reconciliation.
+- **Inbound creation and update:** for a valid match, create or update the corresponding inbound shipment record in NetSuite from the RE workflow.
+- **Exception routing:** isolate records that fail matching or validation and automatically notify the responsible internal team, such as Inventory, by email.
+- **Confirmed reconciliation:** after the team confirms the correct PO and inbound, reconcile the exception to that specific inbound shipment and update its NetSuite record. This keeps errors from being silently applied to the wrong inbound.
 
 #### Amazon FBA preparation and shipment checks
 
