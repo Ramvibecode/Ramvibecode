@@ -26,13 +26,12 @@ Internal source code, customer/vendor details, and live business records are not
 
 ### Real Essentials — E-commerce Operations Toolkit
 
-Built and maintained an operations hub of 11 connected browser-based tools to standardize supplier, ERP, and marketplace files and support day-to-day inbound and e-commerce fulfillment.
+Built and maintained a connected browser-based operations hub for supplier, ERP, and marketplace files. The modules cover:
 
-- Supplier-file normalization and purchase order reconciliation
-- Inbound invoice and packing-list processing, including quantity and case-pack checks
-- FBA manifest, carton-label, and shipped-quantity reconciliation
-- Amazon flat-file and listing comparison workflows
-- Case follow-up and operational reporting
+- **Inbound Processor**, **Packing List Consolidator**, and **Inbound Qty Reconcile** for inbound files, packing lists, and PO quantity and case-pack checks
+- **Send to Amazon**, **FBA Order List**, and **FBA Shipped Qty Cross-Check** for shipment manifests, carton labels, order matching, and shipped-quantity audits
+- **Flat File Toolkit** and **Listing Compare** for catalog and marketplace file validation
+- **Case Tracker** for Seller Central case follow-up
 
 The toolkit is summarized here as a case study. The original HTML and company data are not published.
 
